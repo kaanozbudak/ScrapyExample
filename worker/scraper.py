@@ -1,5 +1,5 @@
 from scrapy import Spider, Request
-from conf import spider_name, spider_urls
+from conf import *
 
 
 class QuoteSpider(Spider):
@@ -8,12 +8,6 @@ class QuoteSpider(Spider):
 
     def parse(self, response, **kwargs):
         count = 0
-        QUOTE_SELECTOR = '.quote'
-        TEXT_SELECTOR = '.text::text'
-        AUTHOR_SELECTOR = '.author::text'
-        ABOUT_SELECTOR = '.author + a::attr("href")'
-        TAGS_SELECTOR = '.tags > .tag::text'
-        NEXT_SELECTOR = '.next a::attr("href")'
 
         for quote in response.css(QUOTE_SELECTOR):
             count += 1
